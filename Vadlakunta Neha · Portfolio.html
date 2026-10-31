@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vadlakunta Neha · Banking &amp; Finance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#14233B; --muted:#53627A; --paper:#F2F6F5; --sheet:#FBFDFC;
+  --rule:#C6D9D5; --margin:#B3303F; --teal:#0E6F69; --tint:#E3EFEC;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ink:#E6EEF0; --muted:#9DB0B6; --paper:#0E1A24; --sheet:#132330;
+    --rule:#26414A; --margin:#E2677A; --teal:#5CC4BA; --tint:#17303A; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#E6EEF0; --muted:#9DB0B6; --paper:#0E1A24; --sheet:#132330;
+  --rule:#26414A; --margin:#E2677A; --teal:#5CC4BA; --tint:#17303A; color-scheme:dark;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--teal);text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:2px}
+
+/* The sheet: a ledger page with a red margin line */
+.sheet{
+  max-width:980px;margin:clamp(0px,3vw,40px) auto;background:var(--sheet);
+  border:1px solid var(--rule);position:relative;
+  background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 31px,var(--rule) 31px,var(--rule) 32px);
+  background-size:100% 32px; background-position:0 -1px;
+}
+.sheet::before{content:"";position:absolute;top:0;bottom:0;left:clamp(14px,6vw,72px);width:2px;background:var(--margin);opacity:.55}
+.inner{position:relative;padding:clamp(28px,6vw,64px) clamp(20px,6vw,72px) clamp(28px,5vw,56px) calc(clamp(14px,6vw,72px) + clamp(18px,3vw,36px))}
+
+.hero{padding-bottom:32px}
+.hero .meta{font:500 .85rem/1.6 var(--sans);color:var(--muted);margin:0 0 8px}
+h1{font:400 clamp(2.6rem,9vw,5.6rem)/.98 var(--serif);letter-spacing:-.02em;margin:0 0 20px;background:var(--sheet);display:inline;padding-right:.2em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.hero h1 span{display:block;font-style:italic;color:var(--teal)}
+.lede{max-width:34em;font:400 clamp(1.15rem,2.4vw,1.4rem)/1.5 var(--serif);background:var(--sheet);padding:6px 0;margin:24px 0 0}
+.draw{display:block;height:3px;width:min(320px,70%);background:var(--margin);margin-top:18px;transform-origin:left;animation:draw 1.1s .2s cubic-bezier(.2,.7,.2,1) both}
+@keyframes draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+.contact{display:flex;flex-wrap:wrap;gap:10px 28px;margin:28px 0 0;padding:0;list-style:none;background:var(--sheet);width:fit-content;max-width:100%}
+.contact a{font-weight:500}
+
+section{margin-top:56px}
+h2{font:500 1.7rem/1.2 var(--serif);margin:0 0 20px;background:var(--sheet);display:inline-block;padding-right:.5em}
+.cols{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0}
+
+/* Ledger rows */
+.ledger{background:var(--sheet);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.row{display:grid;grid-template-columns:150px minmax(0,1fr) 92px;gap:8px 24px;padding:20px 0;border-bottom:1px solid var(--rule)}
+.row:last-child{border-bottom:0}
+.when{font:500 .88rem/1.5 var(--sans);color:var(--muted)}
+.amt{font:500 1rem/1.3 var(--serif);text-align:right;color:var(--teal);font-variant-numeric:tabular-nums}
+.row h3{font:500 1.2rem/1.3 var(--serif);margin:0}
+.row .role{color:var(--muted);font-size:.92rem;margin:2px 0 8px}
+.row p{margin:0 0 6px;font-size:.96rem}
+.row ul{margin:6px 0 0;padding-left:1.1em;font-size:.96rem}
+.row li{margin-bottom:4px}
+.project{font-style:italic;font-family:var(--serif);font-size:1.02rem;margin:0 0 6px}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none;background:var(--sheet);padding:12px 0}
+.chips li{border:1px solid var(--rule);background:var(--tint);padding:4px 12px;border-radius:999px;font-size:.9rem}
+
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px}
+.plain{list-style:none;margin:0;padding:0;background:var(--sheet)}
+.plain li{padding:10px 0;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;gap:16px}
+.plain li span:last-child{color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.plain li:first-child{border-top:2px solid var(--ink)}
+.plain li:last-child{border-bottom:2px solid var(--ink)}
+
+footer{margin-top:64px;font-size:.88rem;color:var(--muted);background:var(--sheet);display:inline-block;padding-right:1em}
+
+@media (max-width:720px){
+  .row{grid-template-columns:minmax(0,1fr) auto}
+  .when{grid-column:1}
+  .amt{grid-column:2;grid-row:1}
+  .row>div{grid-column:1 / -1}
+  .two{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){.draw{animation:none}html{scroll-behavior:auto}}
+@media print{.sheet{border:0;margin:0;background-image:none}.sheet::before{display:none}}
+</style>
+</head>
+<body>
+<main class="sheet">
+<div class="inner">
+
+  <header class="hero">
+    <p class="meta" style="background:var(--sheet);display:inline-block">MBA, Banking &amp; Finance · Symbiosis School of Banking and Finance, Pune · 2026–28</p>
+    <h1>Vadlakunta<span>Neha</span></h1>
+    <span class="draw" aria-hidden="true"></span>
+    <p class="lede">A finance student who has spent two internships inside real books: audits, GST and income tax filings, and a study of how small businesses manage working capital.</p>
+    <ul class="contact">
+      <li><a href="mailto:neha.vadlakunta.26-28@ssbf.edu.in">neha.vadlakunta.26-28@ssbf.edu.in</a></li>
+      <li><a href="https://www.linkedin.com/in/vadlakunta-neha" rel="noopener">linkedin.com/in/vadlakunta-neha</a></li>
+    </ul>
+  </header>
+
+  <section aria-labelledby="exp">
+    <h2 id="exp">Experience</h2>
+    <div class="ledger">
+      <article class="row">
+        <div class="when">Jan – May 2025</div>
+        <div>
+          <h3>K. R. Kamath &amp; Co.</h3>
+          <p class="role">Corporate Intern · Bengaluru, Karnataka</p>
+          <p class="project">Evaluating the effectiveness of working capital management on small businesses</p>
+          <ul>
+            <li>Assisted with audit, GST, income tax compliance and financial documentation across client engagements.</li>
+            <li>Researched how small businesses manage working capital, analysing liquidity, profitability and financial efficiency.</li>
+          </ul>
+        </div>
+        <div class="amt">4 months</div>
+      </article>
+      <article class="row">
+        <div class="when">Jun – Jul 2024</div>
+        <div>
+          <h3>CA Radha Narasimha Rao</h3>
+          <p class="role">Audit Intern · Chennai, Tamil Nadu</p>
+          <p class="project">Impact of the National Faceless Assessment Centre: case studies on house property</p>
+          <ul>
+            <li>Supported tax filing, accounting documentation and compliance work using Tally and statutory portals.</li>
+            <li>Gained hands-on exposure to accounting processes, regulatory compliance and professional reporting standards.</li>
+          </ul>
+        </div>
+        <div class="amt">6 weeks</div>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="edu">
+    <h2 id="edu">Education</h2>
+    <div class="ledger">
+      <article class="row">
+        <div class="when">2026 – 2028</div>
+        <div><h3>MBA, Banking &amp; Finance</h3><p class="role">Symbiosis School of Banking and Finance, Pune</p></div>
+        <div class="amt">Pursuing</div>
+      </article>
+      <article class="row">
+        <div class="when">Graduated 2025</div>
+        <div><h3>B.Com</h3><p class="role">PES University, Bengaluru</p></div>
+        <div class="amt">81.7%</div>
+      </article>
+      <article class="row">
+        <div class="when">2021</div>
+        <div><h3>Class XII</h3><p class="role">Master Minds, Guntur · Andhra Pradesh State Board</p></div>
+        <div class="amt">85.7%</div>
+      </article>
+      <article class="row">
+        <div class="when">2019</div>
+        <div><h3>Class X</h3><p class="role">Sri Chaitanya School, Kadapa · Andhra Pradesh State Board</p></div>
+        <div class="amt">9.7 GPA</div>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="cert">
+    <h2 id="cert">Certifications</h2>
+    <ul class="plain">
+      <li><span>Financial Accounting: Foundations, University of Illinois</span><span>2026</span></li>
+      <li><span>Basic Statistics, University of Amsterdam</span><span>2026</span></li>
+      <li><span>Finance for Non-Finance Professionals, Rice University</span><span>2026</span></li>
+      <li><span>Financial Education for Young Citizens, NISM</span><span>2024</span></li>
+      <li><span>Microsoft Office, ICMAI</span><span>2023</span></li>
+      <li><span>SAP FI-CO, ICMAI</span><span>2023</span></li>
+      <li><span>Digital Foundation for Industries, Centre for Emerging Business</span><span>2022</span></li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="skills">
+    <h2 id="skills">Tools and languages</h2>
+    <ul class="chips">
+      <li>Advanced Excel</li><li>Tally</li><li>SAP FI-CO</li><li>Statutory tax portals</li><li>English</li><li>Telugu</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="beyond">
+    <h2 id="beyond">Beyond the classroom</h2>
+    <div class="two">
+      <ul class="plain">
+        <li><span>Member, Biodiversity Committee, SSBF</span><span>2026</span></li>
+        <li><span>Prof. CNR Scholarship, PES University</span><span>2024</span></li>
+        <li><span>Prof. MRD Scholarship, PES University</span><span>2023</span></li>
+      </ul>
+      <ul class="plain">
+        <li><span>Community work, Nagireddy and Sarojamma Foundation (organic farming NGO)</span><span>2023</span></li>
+        <li><span>CA Foundation, ICAI</span><span>2023</span></li>
+        <li><span>CMA Foundation, ICMAI</span><span>2021</span></li>
+      </ul>
+    </div>
+    <p style="background:var(--sheet);display:inline-block;margin:18px 0 0;color:var(--muted)">Outside work: baking and travelling.</p>
+  </section>
+
+  <footer>Open to internships in finance and investment research. Placement cell: placement@ssbf.edu.in</footer>
+</div>
+</main>
+</body>
+</html>
